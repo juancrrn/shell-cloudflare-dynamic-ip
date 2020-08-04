@@ -9,17 +9,17 @@ ZONE_ID=
 # Common record settings
 ZONE_NAME=
 RECORD_TYPE=
-RULE_PROXIABLE=
-RULE_PROXIED=
-RULE_LOCKED=
-STORED_IP=$(cat cloudflare-dynamic-ip-last.txt)
+RULE_PROXIABLE=true
+RULE_PROXIED=true
+RULE_LOCKED=false
 
 # Specific record settings
 RECORD_ID=
 RECORD_NAME=
 
-# Get current public IP address
+# Get current public and stored IP addresses
 PUBLIC_IP=$(curl -s 'icanhazip.com')
+STORED_IP=$(cat cloudflare-dynamic-ip-last.txt)
 
 if [[ $STORED_IP != $PUBLIC_IP ]]
 then
